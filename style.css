@@ -145,8 +145,9 @@ display: grid;
     align-items: center;
 padding: 15px ;
 grid-auto-flow: column;
-justify-content: start;
-gap: 30px;
+grid-auto-columns: auto;
+
+
 }
 .todo:hover {
     box-shadow:
@@ -154,9 +155,7 @@ gap: 30px;
             4px 4px 7px rgba(0, 0, 0, 0.53);
 }
 
-.todo > div {
-/*border: 1px solid white;*/
-}
+
 .priority-medium {
     border-left: 5px solid #ebcb8b;
 }
@@ -174,66 +173,101 @@ border-left: 5px solid #a3be8c;
     justify-self: start;
 }
 .todo-title {
-
+    color: #d8dee9;
     font-size: 20px;
 
 }
 .todo-title-active {
-color: #d8dee9;
+color: #5e81ac;
+text-decoration: line-through;
 }
 
 .todo-check {
-border: 2px solid #81a1c1;
+border: 2px solid #88c0d0;
     height: 1.5rem;
     width: 1.5rem;
     border-radius: 3px;
 
 }
 .todo-check-active {
-    background: #81a1c1 url("images/check.png") no-repeat;
+    background: #88c0d0 url("images/check.png") no-repeat;
     background-size: contain;
 }
 
 .todo-detail {
     padding: .5rem 1rem;
-    border: 1px solid #81a1c1;
+    border: 1px solid #88c0d0;
     border-radius: 3px;
     font-size: 1rem;
-    color: #81a1c1;
+    color: #88c0d0;
     text-transform: uppercase;
     font-weight: 600;
     cursor: pointer;
     -webkit-transition: all .3s;
-    transition: all .3s;
+    transition: all .2s;
+
 
 }
 .todo-detail:hover {
-background-color: #81a1c1;
+background-color: #88c0d0;
 color: #d8dee9;
 }
 .todo-detail-active {
-    border: 1px solid #5e81ac;
+    border: 1px solid #81a1c1;
     color: #5e81ac;
 }
 .todo-detail-active:hover {
-    background-color: #5e81ac;
+    background-color: #81a1c1;
     color: #d8dee9;
 }
 
 .todo-date {
-color: #88c0d0;
+color: #81a1c1;
 font-weight: 600;
+
 }
 .todo-date-active {
 color: #5e81ac;
 }
 
+.todo-edit {
+    background-color: #a3be8c;
+    border-radius: 50%;
+    height: 2rem;
+    width: 2rem;
 
+    cursor: pointer;
+    -webkit-transition: all .2s;
+    transition: all .2s;
+}
 
+.todo-close {
+    background-color: #bf616a;
+    border-radius: 50%;
+    height: 2rem;
+    width: 2rem;
 
+    cursor: pointer;
+    -webkit-transition: all .2s;
+    transition: all .2s;
+    justify-self: end;
+}
 
+.todo-left, .todo-right {
+display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: auto;
+    align-items: center;
+    gap: 30px;
+}
+.todo-left {
+    justify-content: start;
 
+}
+.todo-right {
+justify-content: end;
 
+}
 
 
 
