@@ -7,6 +7,8 @@
     <script src="main.js" defer></script>
 </head>
 <body>
+
+
 <div class="content">
     <header class="header">
     <div id="headtitle">To-do</div>
@@ -26,25 +28,68 @@
     </div>
 
     <div class="maincontent">
-        <div class="todo priority-high">
-        <div class="todo-left">
-            <div class="todo-check"></div>
-            <div class="todo-title">Gym routine</div>
+
+        <div class="todo priority-high" data-project="gym">
+            <div class="todo-left">
+                <div class="todo-check"></div>
+                <div class="todo-title">Gym routine</div>
+            </div>
+            <div class="todo-right">
+                <div class="todo-detail  ">details</div>
+                <div class="todo-date">Jan 5</div>
+                <div class="todo-close"></div>
+            </div>
         </div>
-        <div class="todo-right">
-            <div class="todo-detail  ">details</div>
-            <div class="todo-date">Jan 5</div>
-            <div class="todo-edit"></div>
-            <div class="todo-close"></div>
+
+        <div class="todo priority-low">
+            <div id="max"></div>
         </div>
-
-
-
-
-        </div>
-        <div class="todo priority-low">2</div>
         <div class="todo priority-medium">3</div>
     </div>
 </div>
+
+<section class="add-project-overlay" style="display: none">
+    <form class="add-project-form">
+        <div class="add-project-header">
+            <div class="add-project-title">Create new..</div>
+            <div class="todo-close add-project-close" ></div>
+        </div>
+        <div class="add-project-sidebar">
+            <div class="add-project-sidebar-todo add-project-active">To-Do</div>
+            <div class="add-project-sidebar-project">Project</div>
+        </div>
+        <div class="add-project-main" style="display: grid">
+            <textarea class="add-project-textarea-title" maxlength="40" required="" placeholder="Title:"></textarea>
+            <textarea class="add-project-textarea-details" maxlength="300" required="" placeholder="Details:"></textarea>
+            <div class="add-project-date-container">
+                <div class="add-date-title">Date:</div>
+                <input  class="create-new-date" type="date" required="">
+            </div>
+            <div class="add-project-priority-container">
+                <div class="add-project-priority-title">Priority: </div>
+
+                <label for="create-priority-low" class="create-priority-btn create-priority-btn-low priority-btn-low-active">
+                    Low
+                    <input type="radio" id="create-priority-low" class="" value="low" name="create-new-priority" required="">
+                </label>
+                <label for="create-priority-medium" class="create-priority-btn create-priority-btn-medium ">
+                    Medium
+                    <input type="radio" id="create-priority-medium" class="" value="medium" name="create-new-priority" required="">
+                </label>
+                <label for="create-priority-high" class="create-priority-btn create-priority-btn-high ">
+                    High
+                    <input type="radio" id="create-priority-high" class="" value="high" name="create-new-priority">
+                </label>
+
+                <input type="submit" value="Add To Do" class="to-do-submit">
+            </div>
+        </div>
+        <div class="create-project-main" style="display: none">
+            <textarea class="create-project-title" required="" maxlength="40" placeholder="Project Title: "></textarea>
+            <input type="submit" value="Create Project" class="create-project-submit">
+        </div>
+    </form>
+</section>
+
 </body>
 </html>
