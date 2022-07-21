@@ -53,7 +53,7 @@ grid-template: 1fr auto / 1fr;
 }
 
 .sidecontent {
-background-color: antiquewhite;
+background-color: aqua;
 margin-bottom: 30px;
 display: grid;
 gap: 30px;
@@ -64,38 +64,39 @@ padding-left: 10px;
 }
 
 .sideheader {
-color: black;
 font-size: 2.7rem;
 font-weight: 500;
-background-color: red;
 transition: 50ms;
 }
 .sideheader:hover {
-
 cursor: pointer;
-padding-left: 10px;
+padding-left: 30px;
 }
+.sideheader-active {
+padding-left: 30px;
+font-weight: 700;
+}
+
 .noactive-header {
-    color: black;
     font-size: 2.7rem;
     font-weight: 500;
-    background-color: red;
     transition: 50ms;
 }
 .sideitem {
-color: black;
 font-size: 2rem;
 font-weight: 500;
-background-color: aqua;
 padding-left: 30px;
-    transition: 50ms;
-
+transition: 50ms;
 }
 .sideitem:hover {
-padding-left: 40px;
+padding-left: 50px;
 cursor: pointer;
-
 }
+.sideitem-active {
+padding-left: 50px;
+font-weight: 700 ;
+}
+
 
 button.addproject {
 border-radius: 100%;
@@ -203,8 +204,8 @@ border: 2px solid #88c0d0;
     text-transform: uppercase;
     font-weight: 600;
     cursor: pointer;
-    -webkit-transition: all .3s;
-    transition: all .2s;
+    -webkit-transition: all .1s;
+    transition: all .1s;
 
 
 }
@@ -341,7 +342,7 @@ padding: 1rem;
 }
 
 .add-project-header > div {
-border: 2px solid black;
+
 }
 .add-project-sidebar{
 background-color: salmon;
@@ -364,7 +365,7 @@ cursor: pointer;
 }
 .add-project-active {
 padding-left: 20px;
-color: #88c0d0;
+font-weight: 600;
 }
 
 .add-project-main {
@@ -516,8 +517,8 @@ color: inherit;
     grid-column: 2 / 3 ;
     padding: 1rem;
     gap: 1rem;
-    height: 340px;
-    width: 650px;
+    height: 324px;
+    width: 614px;
 }
 
 .create-project-title {
