@@ -50,13 +50,29 @@ function createToDo(title, priority, date, project) {
             todo_right.appendChild(todo_detail);
             todo_right.appendChild(todo_date);
             todo_right.appendChild(todo_close)
+
+    todoCheckListener();
+}
+
+function todoCheckListener() {
+   // let todo = document.querySelectorAll(".todo")
+    document.querySelectorAll(".todo").forEach((currentToDo) => {
+
+        currentToDo.querySelector(".todo-check").addEventListener("click", () => {
+            currentToDo.querySelector(".todo-check").classList.toggle("todo-check-active");
+            currentToDo.querySelector(".todo-title").classList.toggle("todo-title-active");
+            currentToDo.querySelector(".todo-detail").classList.toggle("todo-detail-active");
+            currentToDo.querySelector(".todo-date").classList.toggle("todo-date-active");
+            console.log("todo check clicked");
+        })
+
+    })
+
 }
 
 
 
-
-
-export {createToDo}
+export {createToDo, todoCheckListener}
 
 
 
