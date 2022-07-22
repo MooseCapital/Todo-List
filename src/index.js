@@ -1,7 +1,7 @@
-import {createToDo, todoCheckListener} from "./dom";
+import {createToDo, sideProjectListener} from "./dom";
 
 createToDo("title ex.", "high", "june 3");
-
+sideProjectListener();
 //buttons to open overlay, and close overlay
 const addproject = document.querySelector(".addproject");
 const add_project_overlay = document.querySelector(".add-project-overlay");
@@ -21,24 +21,10 @@ const lowinput = document.querySelector("#create-priority-low");
 const medinput = document.querySelector("#create-priority-medium");
 const highinput = document.querySelector("#create-priority-high");
 
-
-//add events to all todos to toggle active css affect
-/*
-let todo = document.querySelectorAll(".todo");
-todo.forEach((currentToDo) => {
-
-    currentToDo.querySelector(".todo-check").addEventListener("click", () => {
-        currentToDo.querySelector(".todo-check").classList.toggle("todo-check-active");
-        currentToDo.querySelector(".todo-title").classList.toggle("todo-title-active");
-        currentToDo.querySelector(".todo-detail").classList.toggle("todo-detail-active");
-        currentToDo.querySelector(".todo-date").classList.toggle("todo-date-active");
-        console.log("todo check clicked");
-    })
-
+//set display to none for details overlay
+document.querySelector(".close-details").addEventListener("click", () => {
+    document.querySelector(".details-overlay").style.display = "none";
 })
-*/
-
-
 
 
 
@@ -121,25 +107,6 @@ highinput.onclick = () => {
 
 
 
-
-
-//to-do items
-// const tododetail = document.querySelector(".todo-detail");
-// const todocheck = document.querySelector(".todo-check");
-// const tododate = document.querySelector(".todo-date");
-// const todotitle = document.querySelector(".todo-title");
-
-
-// turn into queryselector all and use e.target, have to convert all to add classlist on specific todo divs
-/*todocheck.addEventListener("click", () => {
-    todocheck.classList.toggle("todo-check-active");
-    tododetail.classList.toggle("todo-detail-active");
-    tododate.classList.toggle("todo-date-active");
-    todotitle.classList.toggle("todo-title-active");
-
-
-})
-*/
 
 
 

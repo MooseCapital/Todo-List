@@ -51,11 +51,12 @@ function createToDo(title, priority, date, project) {
             todo_right.appendChild(todo_date);
             todo_right.appendChild(todo_close)
 
-    todoCheckListener();
+    todoListener();
+
 }
 
-function todoCheckListener() {
-   // let todo = document.querySelectorAll(".todo")
+function todoListener() {
+
     document.querySelectorAll(".todo").forEach((currentToDo) => {
 
         currentToDo.querySelector(".todo-check").addEventListener("click", () => {
@@ -63,16 +64,64 @@ function todoCheckListener() {
             currentToDo.querySelector(".todo-title").classList.toggle("todo-title-active");
             currentToDo.querySelector(".todo-detail").classList.toggle("todo-detail-active");
             currentToDo.querySelector(".todo-date").classList.toggle("todo-date-active");
-            console.log("todo check clicked");
+            console.log("todo check in dom clicked");
         })
 
+        currentToDo.querySelector(".todo-close").addEventListener("click", () => {
+            //placeholder to remove current to-do from object and localstorage
+            currentToDo.remove();
+            console.log("todo remove test");
+        })
+
+        currentToDo.querySelector(".todo-detail").addEventListener("click", () => {
+            //placeholder, run function to grab actual details from object by using todo[index] getting the right object in array
+            document.querySelector(".details-overlay").style.display = "grid";
+
+        })
     })
 
 }
 
+function sideProjectListener() {
+
+    document.querySelector(".sideheader").addEventListener("click", () => {
+
+        document.querySelector(".sideheader").classList.add("sideheader-active");
+
+        document.querySelectorAll(".sideitem").forEach((sideitem) => {
+            if (sideitem.classList.contains("sideitem-active")) {
+                sideitem.classList.remove("sideitem-active");
+            }
+
+        })
+        console.log("sideheader click");
+    });
+
+    document.querySelectorAll(".sideitem").forEach((sideitem) => {
+
+        sideitem.addEventListener("click", () => {
+
+            document.querySelector(".sideheader").classList.remove("sideheader-active");
+            document.querySelectorAll(".sideitem").forEach((item) => {
+                if (item.classList.contains("sideitem-active")) {
+                    item.classList.remove("sideitem-active");
+                }
+            })
+
+            sideitem.classList.add("sideitem-active");
+            console.log("side item click");
+        })
+
+    })
 
 
-export {createToDo, todoCheckListener}
+
+
+
+
+}
+
+export {createToDo, todoListener, sideProjectListener}
 
 
 
