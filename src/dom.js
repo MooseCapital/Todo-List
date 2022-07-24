@@ -1,6 +1,6 @@
 
 
-function createToDo(title, priority, date, project) {
+function createToDo(title, priority, date) {
 
     let todo = document.createElement("div");
     todo.classList.add("todo");
@@ -13,9 +13,9 @@ function createToDo(title, priority, date, project) {
         todo.classList.add("priority-low");
     }
 
-    if (project) {
-        todo.setAttribute("data-project", project)
-    }
+    // if (project) {
+    //     todo.setAttribute("data-project", project)
+    // }
 
     let todo_left = document.createElement("div");
     todo_left.classList.add("todo-left");
@@ -81,7 +81,7 @@ function todoListener() {
     })
 
 }
-
+/*
 function ProjectListener() {
 
     document.querySelector(".sideheader").addEventListener("click", () => {
@@ -126,10 +126,10 @@ function createProject(title) {
     ProjectListener();
 }
 
+*/
 
 
-
-export {createToDo, todoListener, ProjectListener, createProject}
+export {createToDo, todoListener}
 
 
 

@@ -1,17 +1,17 @@
-import {createToDo, ProjectListener, createProject, todoListener} from "./dom";
+import {createToDo} from "./dom";
 
-createToDo("title ex.", "high", "june 3");
-ProjectListener();
+
+
 //buttons to open overlay, and close overlay
 const addproject = document.querySelector(".addproject");
 const add_project_overlay = document.querySelector(".add-project-overlay");
 const add_project_close = document.querySelector(".add-project-close");
 
 // add to-do project sidebar and changing display
-const sidebar_todo = document.querySelector(".add-project-sidebar-todo");
-const sidebar_project = document.querySelector(".add-project-sidebar-project");
-const todo_main = document.querySelector(".add-project-main");
-const project_main = document.querySelector(".create-project-main");
+//const sidebar_todo = document.querySelector(".add-project-sidebar-todo");
+//const sidebar_project = document.querySelector(".add-project-sidebar-project");
+//const todo_main = document.querySelector(".add-project-main");
+//const project_main = document.querySelector(".create-project-main");
 
 // priority buttons input and labels
 const low_btn = document.querySelector(".create-priority-btn-low");
@@ -20,7 +20,8 @@ const high_btn = document.querySelector(".create-priority-btn-high");
 const lowinput = document.querySelector("#create-priority-low");
 const medinput = document.querySelector("#create-priority-medium");
 const highinput = document.querySelector("#create-priority-high");
-
+// add to do to dom and localstorage
+const todoSubmit = document.querySelector(".to-do-submit");
 //set display to none for details overlay
 document.querySelector(".close-details").addEventListener("click", () => {
     document.querySelector(".details-overlay").style.display = "none";
@@ -30,15 +31,15 @@ document.querySelector(".close-details").addEventListener("click", () => {
 
 addproject.addEventListener("click", () => {
     add_project_overlay.style.display = "grid";
-    console.log(add_project_overlay.style.display);
+
 })
 add_project_close.addEventListener("click" ,() => {
     add_project_overlay.style.display = "none";
-    console.log(add_project_overlay.style.display);
+
 })
 
 
-
+/*
 sidebar_todo.addEventListener("click", () => {
     if (!sidebar_todo.classList.contains("add-project-active")) {
         sidebar_todo.classList.add("add-project-active");
@@ -75,7 +76,7 @@ sidebar_project.addEventListener("click", () => {
     }
 
 })
-
+*/
 lowinput.onclick = () => {
     low_btn.classList.toggle("priority-btn-low-active");
     med_btn.classList.remove("priority-btn-medium-active");
@@ -94,49 +95,88 @@ highinput.onclick = () => {
     med_btn.classList.remove("priority-btn-medium-active");
 }
 
+todoSubmit.addEventListener("click", () => {
+    //title and details selector
+    let title = document.querySelector(".add-project-textarea-title").value;
+    let details = document.querySelector(".add-project-textarea-details").value;
+    let dates = document.querySelector(".create-new-date").value;
+    // priority buttons selectors
+    let prioritys;
+    let lowpriority = document.querySelector("#create-priority-low");
+    let mediumpriority = document.querySelector('#create-priority-medium');
+    let highpriority = document.querySelector("#create-priority-high");
+
+    if (lowpriority.checked) {
+    prioritys =  "low";
+    } else if (mediumpriority.checked) {
+        prioritys = "medium";
+    } else if (highpriority.checked) {
+        prioritys = "high";
+    }
+    //remember remove active classlist from buttons and uncheck when todo is added
 
 
+   // localStorage.setItem('home', JSON.stringify([...home, todoContainer().addToDo([`${title}`], [`${prioritys}`], [`${dates}`], [`${details}`])]));
+    //home.push(todoContainer().addToDo(title, prioritys, dates, details));
+
+    console.log(dates) // format: 2022-07-31
+    console.log(prioritys)
+
+})
+
+
+let todoContainer = (function() {
+
+    function addToDo(title, priority, date, details) {
+    createToDo(title, priority, date)
+
+    return {
+    title, priority, date, details
+    }
+
+    }
+
+return {
+addToDo
+}
+})
+
+if (!localStorage.length) {
+    localStorage.setItem('home', JSON.stringify([]));
+}
+
+let home = JSON.parse(localStorage.getItem('home'));
+// console.log(home)
+//home.push("fruit");
+//console.log(home)
+//localStorage.setItem(("home"), JSON.stringify([...home, "truck", 111]));
+
+if (home.length > 0) {
+
+    for (let i = 0; i < home.length; i++) {
+
+        createToDo(home[i].title, home[i].priority, home[i].date);
+    }
+
+} else if (home.length < 1) {
+    //add default items to todos and put them in localstorage for later,
+    localStorage.setItem('home', JSON.stringify([ todoContainer().addToDo("Work", "low", "June 3", "check emails by 10")]));
+    home.push(todoContainer().addToDo("Work", "low", "June 3", "check emails by 10"));
+    localStorage.setItem('home', JSON.stringify([...home, todoContainer().addToDo("Gym", "medium", "June 5", "do 6 sets of rows")]));
+    home.push(todoContainer().addToDo("Gym", "medium", "June 5", "do 6 sets of rows"));
+    localStorage.setItem('home', JSON.stringify([...home, todoContainer().addToDo("Home", "high", "June 7", "Read my new book the hobbit")]));
+    home.push(todoContainer().addToDo("Home", "high", "June 7", "Read my new book the hobbit"));
+}
+
+console.log(home)
+
+/*
 const projectSubmitBtn = document.querySelector(".create-project-submit");
 const projectTextArea = document.querySelector(".create-project-title");
 
 projectSubmitBtn.addEventListener("click", addProject);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*local storage testing
+local storage testing
 
 localStorage.plants = JSON.stringify({"fruit": "apple"});
 // console.log(JSON.parse(localStorage.plants).fruit)
