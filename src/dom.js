@@ -82,7 +82,7 @@ function todoListener() {
 
 }
 
-function sideProjectListener() {
+function ProjectListener() {
 
     document.querySelector(".sideheader").addEventListener("click", () => {
 
@@ -114,14 +114,22 @@ function sideProjectListener() {
 
     })
 
+}
 
+function createProject(title) {
 
+    let newProject = document.createElement("div");
+    newProject.classList.add("sideitem");
+    newProject.textContent = title;
 
-
+    document.querySelector(".sidecontent").appendChild(newProject);
 
 }
 
-export {createToDo, todoListener, sideProjectListener}
+
+
+
+export {createToDo, todoListener, ProjectListener, createProject}
 
 
 

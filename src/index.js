@@ -1,7 +1,7 @@
-import {createToDo, sideProjectListener} from "./dom";
+import {createToDo, ProjectListener} from "./dom";
 
 createToDo("title ex.", "high", "june 3");
-sideProjectListener();
+ProjectListener();
 //buttons to open overlay, and close overlay
 const addproject = document.querySelector(".addproject");
 const add_project_overlay = document.querySelector(".add-project-overlay");
@@ -93,6 +93,22 @@ highinput.onclick = () => {
     low_btn.classList.remove("priority-btn-low-active");
     med_btn.classList.remove("priority-btn-medium-active");
 }
+
+
+//local storage testing
+
+localStorage.plants = JSON.stringify({"fruit": "apple"});
+console.log(localStorage);
+console.log(JSON.parse(localStorage.plants).fruit)
+
+let todos = (JSON.parse(localStorage.todos) || {})
+
+
+
+
+
+
+
 
 
 
