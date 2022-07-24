@@ -87,6 +87,7 @@ font-size: 2rem;
 font-weight: 500;
 padding-left: 30px;
 transition: 50ms;
+text-transform: capitalize;
 }
 .sideitem:hover {
 padding-left: 50px;
