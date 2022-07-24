@@ -1,4 +1,4 @@
-import {createToDo, ProjectListener} from "./dom";
+import {createToDo, ProjectListener, createProject, todoListener} from "./dom";
 
 createToDo("title ex.", "high", "june 3");
 ProjectListener();
@@ -95,23 +95,75 @@ highinput.onclick = () => {
 }
 
 
-//local storage testing
+
+const projectSubmitBtn = document.querySelector(".create-project-submit");
+const projectTextArea = document.querySelector(".create-project-title");
+
+projectSubmitBtn.addEventListener("click", addProject);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*local storage testing
 
 localStorage.plants = JSON.stringify({"fruit": "apple"});
-console.log(localStorage);
-console.log(JSON.parse(localStorage.plants).fruit)
+// console.log(JSON.parse(localStorage.plants).fruit)
+//add all todos to local storage we will remove when a user removes them
+let todos = JSON.parse(localStorage.getItem('todos')) || {"home":   [],
+                                                 "work":   [],
+                                                 "gym":    [],
+                                                 "school": []
+  }
 
-let todos = (JSON.parse(localStorage.todos) || {})
-
-
-
-
-
-
-
+*/
 
 
+// add project logic
 
+/*we need an addproject modules to hold the methods and run a factory function to add the project to local storage below
+function addProject() {
+
+   let title =  projectTextArea.value.trim().toLowerCase();
+    createProject(title);
+   localStorage.setItem("todos", JSON.stringify({...todos, [`${title}`]: []})); //try spread operator to add onto the object ...todos
+    console.log(localStorage);
+    console.log(todos);
+
+}
+
+*/
 
 
 

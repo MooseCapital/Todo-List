@@ -123,7 +123,7 @@ function createProject(title) {
     newProject.textContent = title;
 
     document.querySelector(".sidecontent").appendChild(newProject);
-
+    ProjectListener();
 }
 
 
