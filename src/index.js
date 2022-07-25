@@ -1,6 +1,6 @@
 import {createToDo} from "./dom";
-
-
+import {format} from "date-fns";
+import {parseISO} from "date-fns";
 
 //buttons to open overlay, and close overlay
 const addproject = document.querySelector(".addproject");
@@ -116,12 +116,16 @@ todoSubmit.addEventListener("click", () => {
     //remember remove active classlist from buttons and uncheck when todo is added
 
 
-   // localStorage.setItem('home', JSON.stringify([...home, todoContainer().addToDo([`${title}`], [`${prioritys}`], [`${dates}`], [`${details}`])]));
-    //home.push(todoContainer().addToDo(title, prioritys, dates, details));
+   //localStorage.setItem('home', JSON.stringify([...home, todoContainer().addToDo([`${title}`], [`${prioritys}`], [`${format(parseISO(dates), 'MMMM d')}`], [`${details}`])]));
+    home.push(todoContainer().addToDo(title, prioritys, format(parseISO(dates), 'MMMM d'), details));
 
-    console.log(dates) // format: 2022-07-31
+
+    //need to lookup date format packet, then connect remove button in createtoDo() to remove the to do from home and localstorage
+   // console.log(dates) format: 2022-07-31
+    //console.log(format(parseISO(dates), 'MMMM d')) july 29
+    console.log(home);
+    console.log(localStorage);
     console.log(prioritys)
-
 })
 
 
@@ -166,10 +170,11 @@ if (home.length > 0) {
     home.push(todoContainer().addToDo("Gym", "medium", "June 5", "do 6 sets of rows"));
     localStorage.setItem('home', JSON.stringify([...home, todoContainer().addToDo("Home", "high", "June 7", "Read my new book the hobbit")]));
     home.push(todoContainer().addToDo("Home", "high", "June 7", "Read my new book the hobbit"));
+    //setTimeout() re
 }
 
 console.log(home)
-
+console.log(JSON.parse(localStorage.getItem('home')).length);
 /*
 const projectSubmitBtn = document.querySelector(".create-project-submit");
 const projectTextArea = document.querySelector(".create-project-title");
