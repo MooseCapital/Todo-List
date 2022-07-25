@@ -60,10 +60,11 @@ function todoListener() {
     document.querySelectorAll(".todo").forEach((currentToDo) => {
 
         currentToDo.querySelector(".todo-check").addEventListener("click", () => {
-            currentToDo.querySelector(".todo-check").classList.toggle("todo-check-active");
-            currentToDo.querySelector(".todo-title").classList.toggle("todo-title-active");
-            currentToDo.querySelector(".todo-detail").classList.toggle("todo-detail-active");
-            currentToDo.querySelector(".todo-date").classList.toggle("todo-date-active");
+
+            currentToDo.querySelector(".todo-check").classList.add("todo-check-active");
+            currentToDo.querySelector(".todo-title").classList.add("todo-title-active");
+            currentToDo.querySelector(".todo-detail").classList.add("todo-detail-active");
+            currentToDo.querySelector(".todo-date").classList.add("todo-date-active");
             console.log("todo check in dom clicked");
         })
 
@@ -76,7 +77,7 @@ function todoListener() {
         currentToDo.querySelector(".todo-detail").addEventListener("click", () => {
             //placeholder, run function to grab actual details from object by using todo[index] getting the right object in array
             document.querySelector(".details-overlay").style.display = "grid";
-
+            console.log("detail works")
         })
     })
 
