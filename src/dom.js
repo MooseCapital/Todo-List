@@ -1,9 +1,12 @@
 
 
 function createToDo(title, priority, date) {
-
+    let maincontent =  document.querySelector(".maincontent");
     let todo = document.createElement("div");
     todo.classList.add("todo");
+
+
+    todo.setAttribute("data-index", `${maincontent.childNodes.length - 1}`)
 
     if (priority.toLowerCase() === "high") {
         todo.classList.add("priority-high");
@@ -42,7 +45,7 @@ function createToDo(title, priority, date) {
         todo_close.classList.add("todo-close");
 
 
-    document.querySelector(".maincontent").appendChild(todo);
+   maincontent.appendChild(todo);
         todo.appendChild(todo_left)
             todo_left.appendChild(todo_check);
             todo_left.appendChild(todo_title);
@@ -57,63 +60,6 @@ function createToDo(title, priority, date) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-function todoListener() {
-
-    document.querySelector(".maincontent").addEventListener("click", (e) => {
-        let todos1 = e.target.closest(".todo");
-        if (todos1) {
-            if (e.target.closest(".todo-check")) {
-                todos1.classList.toggle("active");
-                console.log(e.target.closest(".todo-check"))
-            }
-
-            if (e.target.closest(".todo-close")) {
-                todos1.remove();
-            }
-
-            if (e.target.closest(".todo-detail")) {
-                document.querySelector(".details-overlay").style.display = "grid";
-
-            }
-
-        }
-
-    })
-
-
-/*
-    document.querySelectorAll(".todo").forEach((currentToDo) => {
-
-        currentToDo.querySelector(".todo-check").addEventListener("click", (e) => {
-          currentToDo.classList.toggle("active");
-            console.log(currentToDo);
-
-        })
-
-        currentToDo.querySelector(".todo-close").addEventListener("click", () => {
-            //remove current to-do from dom
-            currentToDo.remove();
-            console.log("todo remove test");
-        })
-
-        currentToDo.querySelector(".todo-detail").addEventListener("click", () => {
-            //open details overlay
-            document.querySelector(".details-overlay").style.display = "grid";
-            console.log("detail test")
-        })
-    })
-    */
-}
 /*
 function ProjectListener() {
 
@@ -162,7 +108,7 @@ function createProject(title) {
 */
 
 
-export {createToDo, todoListener}
+export {createToDo}
 
 
 /*

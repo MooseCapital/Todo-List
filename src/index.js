@@ -1,4 +1,4 @@
-import {createToDo, todoListener} from "./dom";
+import {createToDo} from "./dom";
 import {format} from "date-fns";
 import {parseISO} from "date-fns";
 
@@ -216,7 +216,58 @@ function addProject() {
 
 */
 
+function todoListener() {
 
+    document.querySelector(".maincontent").addEventListener("click", (e) => {
+        let todos1 = e.target.closest(".todo");
+        let main = e.target.closest(".maincontent");
+        let mainarr;
+
+        if (todos1) {
+
+            if (e.target.closest(".todo-check")) {
+                todos1.classList.toggle("active");
+                console.log(e.target.closest(".todo-check"))
+            }
+
+            if (e.target.closest(".todo-close")) {
+
+                home.splice(todos1.getAttribute("data-index"),1);
+                localStorage.setItem('home', JSON.stringify([...home]));
+
+                todos1.remove();
+
+                mainarr = Array.from(main.children);
+                for (let i = 0; i < mainarr.length; i++) {
+                    main.children[i].setAttribute("data-index", i.toString())
+
+                }
+                // try a for loop where main.children[i] turns to set data-index[i]
+                //this would match current divs inside main to the home array that gets attribute
+
+                console.log(mainarr)
+
+            }
+
+            if (e.target.closest(".todo-detail")) {
+                document.querySelector(".details-overlay").style.display = "grid";
+
+                todos1.getAttribute("data-index")
+
+                document.querySelector(".details-title").innerText = `${home[todos1.getAttribute("data-index")].title}`;
+                document.querySelector(".details-priority-info").innerText = `${home[todos1.getAttribute("data-index")].priority}`;
+                document.querySelector(".details-date-info").innerText = `${home[todos1.getAttribute("data-index")].date}`;
+
+                document.querySelector(".details-details-info").innerText = `${home[todos1.getAttribute("data-index")].details}`;
+                
+
+
+            }
+
+        }
+
+    })
+}
 
 
 todoListener();
