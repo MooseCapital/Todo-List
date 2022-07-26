@@ -119,12 +119,15 @@ todoSubmit.addEventListener("click", () => {
    localStorage.setItem('home', JSON.stringify([...home, todoContainer().addToDo(`${title}`, `${prioritys}`, `${format(parseISO(dates), 'MMMM d')}`, `${details}`)]));
     //home.push(todoContainer().addToDo(title, prioritys, format(parseISO(dates), 'MMMM d'), details));
     home.push(JSON.parse(localStorage.getItem('home'))[home.length]);
+    console.log(home);
+
+
 
     //need to lookup date format packet, then connect remove button in createtoDo() to remove the to do from home and localstorage
    // console.log(dates) format: 2022-07-31
     //console.log(format(parseISO(dates), 'MMMM d')) july 29
-    console.log(home);
-    console.log(localStorage);
+    //console.log(home);
+   // console.log(localStorage);
 
 })
 
@@ -176,8 +179,8 @@ if (home.length > 0) {
     //setTimeout() re
 }
 
-console.log(home)
-console.log(JSON.parse(localStorage.getItem('home')));
+//console.log(home)
+//console.log(JSON.parse(localStorage.getItem('home')));
 /*
 const projectSubmitBtn = document.querySelector(".create-project-submit");
 const projectTextArea = document.querySelector(".create-project-title");
@@ -216,7 +219,7 @@ function addProject() {
 
 
 
-
+todoListener();
 
 
 
