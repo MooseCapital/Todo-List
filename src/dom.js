@@ -51,36 +51,68 @@ function createToDo(title, priority, date) {
             todo_right.appendChild(todo_date);
             todo_right.appendChild(todo_close)
 
-    todoListener();
+
 
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
 function todoListener() {
 
+    document.querySelector(".maincontent").addEventListener("click", (e) => {
+        let todos1 = e.target.closest(".todo");
+        if (todos1) {
+            if (e.target.closest(".todo-check")) {
+                todos1.classList.toggle("active");
+                console.log(e.target.closest(".todo-check"))
+            }
+
+            if (e.target.closest(".todo-close")) {
+                todos1.remove();
+            }
+
+            if (e.target.closest(".todo-detail")) {
+                document.querySelector(".details-overlay").style.display = "grid";
+
+            }
+
+        }
+
+    })
+
+
+/*
     document.querySelectorAll(".todo").forEach((currentToDo) => {
 
-        currentToDo.querySelector(".todo-check").addEventListener("click", () => {
+        currentToDo.querySelector(".todo-check").addEventListener("click", (e) => {
+          currentToDo.classList.toggle("active");
+            console.log(currentToDo);
 
-            currentToDo.querySelector(".todo-check").classList.add("todo-check-active");
-            currentToDo.querySelector(".todo-title").classList.add("todo-title-active");
-            currentToDo.querySelector(".todo-detail").classList.add("todo-detail-active");
-            currentToDo.querySelector(".todo-date").classList.add("todo-date-active");
-            console.log("todo check in dom clicked");
         })
 
         currentToDo.querySelector(".todo-close").addEventListener("click", () => {
-            //placeholder to remove current to-do from object and localstorage
+            //remove current to-do from dom
             currentToDo.remove();
             console.log("todo remove test");
         })
 
         currentToDo.querySelector(".todo-detail").addEventListener("click", () => {
-            //placeholder, run function to grab actual details from object by using todo[index] getting the right object in array
+            //open details overlay
             document.querySelector(".details-overlay").style.display = "grid";
-            console.log("detail works")
+            console.log("detail test")
         })
     })
-
+    */
 }
 /*
 function ProjectListener() {
@@ -133,9 +165,19 @@ function createProject(title) {
 export {createToDo, todoListener}
 
 
+/*
+I have a function to create the dom, so every time I create a todo, i was running the listener function
+now it makes sense, every time I added one, it would run it minus 1 time. add -> remove -> add.
 
+I was under the impression, adding more listeners to the same thing would just combine instead of running 5 times
 
+now I have a problem when i create a new todo, how do i listen to these new items? I was thinking possibly
+remove the listener, then rereun the listen function. ex.
 
+3 todos, add 1 todo - without rereunning it won't be listened to
+so delete previous listener, rerun, now only 1 listener exist for 4 todos
+4 todos, add 1 - remove listener, add again, now one listener on 5 todos
+ */
 
 
 
